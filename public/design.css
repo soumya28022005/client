@@ -1,0 +1,120 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Main Container */
+#root {
+  width: 90%;
+  max-width: 700px;
+  padding: 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* AI Generator Title */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  white-space: nowrap; /* Ensures AI Generator stays in one line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Input and Button Container */
+.input-container {
+  display: flex;
+  flex-direction: row; /* Default: Input and button side by side */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Input Field */
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.5rem;
+  width: 100%;
+}
+
+/* Button */
+button {
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #ff4081;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.01s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #e6006b;
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .animate-slideIn {
+    animation: slideIn 1s ease-in-out;
+  }
+
+/* mobile  Design */
+@media screen and (max-width: 768px) {
+  .input-container {
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+  
+  
+  
