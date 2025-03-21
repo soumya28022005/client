@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  /* overflow-x: hidden; */
 }
 
 .App-logo {
@@ -22,6 +26,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow:scroll
 }
 
 .App-link {

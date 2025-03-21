@@ -1,10 +1,10 @@
 import React from "react";
 import QuestionGenerator from "./components/QuestionGenerator";
+import "./App.css";
 
 function App() {
     return (
-        <div>
-            <h1>AI-Powered Exam Preparation</h1>
+        <div className="App">
             <QuestionGenerator />
         </div>
     );

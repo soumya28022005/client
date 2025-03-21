@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import VideoSolution from "./VideoSolution";
 
 const QuestionGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -25,6 +26,7 @@ const QuestionGenerator = () => {
         "https://exam-prep-rp4x.onrender.com/api/questions/generate",
         { topic }
       );
+      console.log(response);
       setQuestion(response.data);
     } catch (error) {
       console.error("Error fetching question:", error);
@@ -39,25 +41,41 @@ const QuestionGenerator = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", margin: "20px auto", maxWidth: "600px", overflow: "hidden" }}>
-      {/* Animated Header on Mobile, Static on Laptop */}
-      {isMobile ? (
-        <motion.h2
-          initial={{ x: "-100%" }}
-          animate={{ x: "100%" }}
-          exit={{ x: "100%" }}
-          transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "restart" }}
-          style={{
-            fontSize: "20px",
-            whiteSpace: "nowrap",
-            position: "relative",
-          }}
-        >
-          AI-Powered Exam Generator (S)
-        </motion.h2>
-      ) : (
-        <h2 style={{ fontSize: "30px" }}>AI-Powered Exam Generator (S)</h2>
-      )}
+    <div
+      style={{
+        textAlign: "center",
+        margin: "20px auto",
+        maxWidth: "600px",
+        minHeight: "600px", // Changed from fixed height to minHeight
+        overflow: "hidden", // Added overflow hidden to main container
+        padding: "0 10px", // Added padding to prevent content touching edges
+      }}
+    >
+      {/* Header with container to manage overflow */}
+      <div style={{ overflow: " ", position: "relative", width: "100%" }}>
+        {isMobile ? (
+          <motion.h2
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            exit={{ x: "100%" }}
+            transition={{
+              duration: 10,
+              ease: "linear",
+              repeat: Infinity,
+              repeatType: "restart",
+            }}
+            style={{
+              fontSize: "20px",
+              whiteSpace: "nowrap",
+              position: "relative",
+            }}
+          >
+            AI-Powered Exam Generator
+          </motion.h2>
+        ) : (
+          <h2 style={{ fontSize: "30px" }}>AI-Powered Exam Preperation</h2>
+        )}
+      </div>
 
       <div
         style={{
@@ -81,7 +99,7 @@ const QuestionGenerator = () => {
             padding: "14px",
             borderRadius: "8px",
             border: "1px solid #ccc",
-            width: isMobile ? "100%" : "300px",
+            width: isMobile ? "calc(100% - 30px)" : "300px", // Adjusted width calc for mobile
             fontSize: "16px",
             outline: "none",
             transition: "box-shadow 0.3s ease",
@@ -113,8 +131,14 @@ const QuestionGenerator = () => {
         </motion.button>
       </div>
 
+      {/* Question container with overflow handling */}
       {question && !loading && (
-        <div style={{ marginTop: "15px", textAlign: "left" }}>
+        <div style={{ 
+          marginTop: "15px", 
+          textAlign: "left",
+          maxWidth: "100%",
+          overflow: "auto" // Add scroll if content is too wide
+        }}>
           <h3>{question.question}</h3>
           {question.options.map((opt, index) => (
             <p key={index} style={{ margin: "5px 0" }}>
@@ -123,6 +147,8 @@ const QuestionGenerator = () => {
           ))}
         </div>
       )}
+
+      {question && <VideoSolution topic={topic} />}
 
       {/* CSS Animations */}
       <style>
