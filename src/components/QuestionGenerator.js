@@ -45,7 +45,7 @@ const QuestionGenerator = () => {
     setShowAnswer(false);
     try {
       const response = await axios.post(
-        "https://exam-prep-rp4x.onrender.com/api/questions/generate-mcq",
+        "http://localhost:5000/api/questions/generate-mcq",
         { topic, classLevel: selectedClass }
       );
       console.log(response);

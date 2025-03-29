@@ -10,7 +10,7 @@ const VideoSolution = ({ topic, classLevel }) => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://exam-prep-rp4x.onrender.com/api/video/soln", 
+        "http://localhost:5000/api/video/soln", 
         { topic }
       );
       setVideoUrl(response.data.videoUrl);
